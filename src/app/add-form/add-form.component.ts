@@ -12,4 +12,8 @@ export class AddFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  addTodo($event: MouseEvent) {
+    console.log('Add button clicked!', $event);
+  }
+
 }

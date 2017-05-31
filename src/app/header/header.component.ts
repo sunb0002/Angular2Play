@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
 
     let Obs = {
       next: (value) => {
-        console.log("%cwwwwNext %s", this.RainbowCss, value);
+        //console.log("%cwwwwNext %s", this.RainbowCss, value);
         this.myDate = new Date();
       },
       error: (err) => {

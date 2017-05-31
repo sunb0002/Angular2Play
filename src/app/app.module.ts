@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AddFormComponent } from './add-form/add-form.component';
 import { TodoItemsComponent } from './todo-items/todo-items.component';
+import { TodoListService } from './todo-list.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { TodoItemsComponent } from './todo-items/todo-items.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [TodoListService], //import my service
   bootstrap: [AppComponent]
 })
 export class AppModule { }

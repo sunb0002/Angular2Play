@@ -21,8 +21,8 @@ export class AppComponent {
   }
 
   addTodo(text: string) {
-    console.log('mmmmmm addTodo text=' + text);
     let itemX = new TodoItemClass((new Date().getTime()), text, false);
+    console.log('mmmmmm addTodo itemX:', itemX);
     this.todoItems.push(itemX);
   }
 }

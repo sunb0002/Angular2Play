@@ -1,8 +1,10 @@
 <ul>
-    <li *ngFor="let item of theTodoItems">
+    <li *ngFor="let item of theTodoItems; let i=index; let firstRecord=first; let lastRecord = last; let evenRecord = even; let oddRecord = odd; ">
         <label htmlFor="chk_1{{item.id}}">
             <input id="chk_{{item.id}}" type="checkbox" [checked]="item.done">
-            {{item.value}}
+            <span [ngClass]="{'done' : item.done, 'text-danger': firstRecord, 'text-warning': lastRecord, 'bg-info': evenRecord, 'bg-success': oddRecord}">
+                {{ i }} . {{ item.value }}
+            </span>
         </label>
         <a href="#">Del</a>
         <span *ngIf="item.done">(Already done)</span>

@@ -16,8 +16,9 @@ export class AddFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  addTodo($event: MouseEvent) {
-    console.log('mmmmmmmmmAdd button clicked!', $event);
+  addTodoFORM($event: MouseEvent) {
+    console.log('mmmmmmmmmaddTodoFORM button clicked', $event);
+    console.log('mmmmmmmmmaddTodoFORM emmiting', this.todoText);
     this.addTodoItem.emit(this.todoText);
   }
 

@@ -1,12 +1,16 @@
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { TodoItem, TodoItemClass } from './shared/todo-item';
+import { TodoItem, TodoItemClass, SerializationHelper } from './shared/todo-item';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class TodoListService {
 
   private todoItems: TodoItem[];
-  constructor() {
-    this.initTodoItems();
+
+  constructor(private http: Http) {
+    //this.getTodoList();
+    //this.initTodoItems();
   }
 
   initTodoItems() {
@@ -18,7 +22,8 @@ export class TodoListService {
   }
 
   getTodoList(): TodoItem[] {
-    console.log('mmmmmmSERVICE getTodoList:', this.todoItems);
+    this.httpGetList();
+    console.log('mmmmmmSERVICE getTodoList1:', this.todoItems);
     return this.todoItems;
   }
 
@@ -35,5 +40,50 @@ export class TodoListService {
   toggleItemStatus(item: TodoItem) {
     item.done = !item.done;
   }
+
+  httpGetList(): void {
+    const url1 = '/assets/todo-data2nd.json';
+    let obj1 = this.http.get(url1).map(sbres => sbres.json()).retry(4);
+    console.log('httpGetList obj3:', obj1);
+    obj1.subscribe(
+      (data) => this.httpHandleData(data),
+      (err) => this.httpHandleError(err),
+      () => this.httpHandleComplete()
+    );
+  }
+
+  httpHandleData(data) {
+    console.log('kkkkkkSERVICE httpHandleData: ', data);
+
+    try {
+      let u = new TodoItemClass();
+      u.fromJSON(data);
+      console.log("httpHandleData 1111=", u);
+
+      let u2temp: string = JSON.parse(JSON.stringify(data));
+      let u2: TodoItemClass = Object.assign(new TodoItemClass(), u2temp);
+      console.log("httpHandleData 2222=", u2);
+
+      let u3: TodoItemClass = SerializationHelper.toInstance2(new TodoItemClass(), JSON.stringify(data));
+      console.log("httpHandleData 3333=", u3);
+      console.log("httpHandleData 3333=", u3.getID());
+
+
+    } catch (e) {
+      console.log("httpHandleData eeee=", e);
+    }
+
+  }
+
+  httpHandleError(error) {
+    console.log('kkkkkkSERVICE httpHandleError:', error)
+    return Observable.throw(error);
+  }
+
+  httpHandleComplete() {
+    console.log('kkkkkkSERVICE Completed!');
+  }
+
+
 
 }

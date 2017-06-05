@@ -8,5 +8,6 @@
         </label>
         <a href="#">Del</a>
         <span *ngIf="item.done">(Already done)</span>
+        <span>{{item.done | donepipe:true}}</span>
     </li>
 </ul>

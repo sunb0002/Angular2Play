@@ -10,13 +10,17 @@ import { TodoListService } from '../todo-list.service';
 export class TodoItemsComponent implements OnInit {
 
   // tslint:disable-next-line:no-input-rename
-  @Input('items')
-  theTodoItems: TodoItem[];
+  public theTodoItems: TodoItem[];
 
   constructor(private todoSvc: TodoListService) { }
 
   ngOnInit() {
     this.theTodoItems = this.todoSvc.getTodoItems();
+  }
+
+  deleteItem(id: number) {
+    console.log("deleteItem=" + id);
+    this.todoSvc.deleteItem(id);
   }
 
 }

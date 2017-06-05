@@ -10,8 +10,7 @@ export class TodoListService {
     //this.getTodoList();
     this.initTodoItems();
   }
-
-  private todoItems: TodoItem[];
+  public todoItems: TodoItem[];
 
   public getTodoItems(): TodoItem[] {
     return this.todoItems;
@@ -39,9 +38,16 @@ export class TodoListService {
     this.todoItems.push(itemX);
   }
 
-  deleteItem(item: TodoItem) {
-    this.todoItems = this.todoItems.filter(tditem => tditem.id !== item.id);
+  deleteItem(input: TodoItemClass | number) {
+    console.log("SERVICE deleteItem: ", input);
+    if (input instanceof TodoItemClass) {
+      this.todoItems = this.todoItems.filter(tditem => tditem.id !== input.id);
+    } else {
+      this.todoItems = this.todoItems.filter(tditem => tditem.id !== input);
+    }
+    console.log("SERVICE deleteItem, new list: ", this.todoItems);
   }
+
 
   toggleItemStatus(item: TodoItem) {
     item.done = !item.done;

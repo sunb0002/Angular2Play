@@ -50,6 +50,7 @@ export class TodoListService {
 
 
   toggleItemStatus(item: TodoItem) {
+    console.log('toggleItemStatus! item.id=' + item.id);
     item.done = !item.done;
   }
 

@@ -1,7 +1,7 @@
 <ul>
     <li *ngFor="let item of todoSvc.todoItems; let i=index; let firstRecord=first; let lastRecord = last; let evenRecord = even; let oddRecord = odd; ">
         <label htmlFor="chk_1{{item.id}}">
-            <input id="chk_{{item.id}}" type="checkbox" [checked]="item.done">
+            <input id="chk_{{item.id}}" type="checkbox" (change)="todoSvc.toggleItemStatus(item)" [checked]="item.done">
             <span [ngClass]="{'done' : item.done, 'text-danger': firstRecord, 'text-warning': lastRecord, 'bg-info': evenRecord, 'bg-success': oddRecord}">
                 {{ i }} . {{ item.value }}
             </span>

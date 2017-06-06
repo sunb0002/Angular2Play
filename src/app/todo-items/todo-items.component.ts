@@ -12,7 +12,7 @@ export class TodoItemsComponent implements OnInit {
   // tslint:disable-next-line:no-input-rename
   public theTodoItems: TodoItem[];
 
-  constructor(private todoSvc: TodoListService) { }
+  constructor(public todoSvc: TodoListService) { }
 
   ngOnInit() {
     this.theTodoItems = this.todoSvc.getTodoItems();

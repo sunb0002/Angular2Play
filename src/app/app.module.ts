@@ -10,6 +10,7 @@ import { TodoItemsComponent } from './todo-items/todo-items.component';
 import { TodoListService } from './todo-list.service';
 import { DonepipePipe } from './donepipe.pipe';
 import { BsButtonDirective } from './bs-button.directive';
+import { SbroutesModule } from './sbroutes/sbroutes.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BsButtonDirective } from './bs-button.directive';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    SbroutesModule //must manually add
   ],
   providers: [TodoListService], //import my service
   bootstrap: [AppComponent]

@@ -10,6 +10,7 @@ export class AddFormComponent implements OnInit {
   @Output()
   addTodoItem = new EventEmitter();
   todoText: string = '';
+  isOver: boolean;
 
   constructor() { }
 

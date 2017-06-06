@@ -9,6 +9,7 @@ import { AddFormComponent } from './add-form/add-form.component';
 import { TodoItemsComponent } from './todo-items/todo-items.component';
 import { TodoListService } from './todo-list.service';
 import { DonepipePipe } from './donepipe.pipe';
+import { BsButtonDirective } from './bs-button.directive';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DonepipePipe } from './donepipe.pipe';
     HeaderComponent,
     AddFormComponent,
     TodoItemsComponent,
-    DonepipePipe
+    DonepipePipe,
+    BsButtonDirective
   ],
   imports: [
     BrowserModule,

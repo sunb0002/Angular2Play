@@ -1,3 +1,5 @@
 <p>
-    <input type="text" [(ngModel)]="todoText" placeholder="Please Enter Item"> <button appBsButton="danger" (click)="addTodoFORM($event)">Add Lah: {{todoText}}</button>
+    <input type="text" [(ngModel)]="todoText" placeholder="Please Enter Item">
+    <button appBsButton="primary" (click)="addTodoFORM($event)" (mouseenter)="isOver = true" (mouseleave)="isOver = false" [ngClass]=" isOver ? 'btn-danger' : 'btn-primary'">Add Lah: {{todoText}}</button>
+    <span appBsButtonSpan class="bg-success text-white">MouseFlyOver</span>
 </p>

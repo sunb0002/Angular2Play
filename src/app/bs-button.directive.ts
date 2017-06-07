@@ -18,11 +18,11 @@ export class BsButtonDirective {
     let testInput = this.appBsButton;
 
     //// ES6/JSX Template literals
-    console.log(`BsButtonDirective testInput: ${testInput}`);
+    //console.log(`BsButtonDirective testInput: ${testInput}`);
 
     const button = (this.el.nativeElement as HTMLElement);
     // HTML element.tagName
-    console.log("This is a %o element. Tagname=" + button.tagName, button);
+    //console.log("This is a %o element. Tagname=" + button.tagName, button);
 
     if (button.tagName.toUpperCase() === "BUTTON") {
       button.classList.add('btn');

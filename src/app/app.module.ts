@@ -1,3 +1,4 @@
+import { Router2Module } from './sbroutes/router2/router2.module';
 import { RouterModule } from '@angular/router';
 import { Persona2Component } from './sbroutes/persona2/persona2.component';
 import { Persona1Component } from './sbroutes/persona1/persona1.component';
@@ -32,6 +33,7 @@ import { PersonaNotFoundComponent } from "app/sbroutes/persona-not-found/persona
     BrowserModule,
     FormsModule,
     HttpModule,
+    Router2Module,
     RouterModule.forRoot(routes) //must manually add
   ],
   providers: [TodoListService], //import my service

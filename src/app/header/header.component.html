@@ -1,15 +1,18 @@
 <p>
     header works! Magic girl today: {{magica}}
 </p>
-<div>
-    <ul class="nav navbar-nav">
-        <li><a routerLink="per1">Persona1</a></li>
-        <li><a routerLink="per2">Persona2</a></li>
-        <li><a routerLink="per3">Persona3</a></li>
-        <li><a routerLink="per4">PersonaX</a></li>
-    </ul>
+
+<ul class="nav navbar-nav">
+    <li><a routerLink="per1">Persona1</a></li>
+    <li><a routerLink="per2">Persona2</a></li>
+    <li><a routerLink="per3">Persona3</a></li>
+    <li><a routerLink="per4">PersonaX</a></li>
+</ul>
+
+<!--must add width for div, otherwise not displaying in line-->
+<div class="main-container mainContainerPushLeft" style="width: 500px;">
+    <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>
 <span [ngStyle]="{'font-weight': 'bold', 'color': NormalColor}">
     Current datetime {{myDate | date:'medium'}}
 </span>

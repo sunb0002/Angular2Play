@@ -1,5 +1,4 @@
 import { RouterModule } from '@angular/router';
-import { Persona3Component } from './sbroutes/persona3/persona3.component';
 import { Persona2Component } from './sbroutes/persona2/persona2.component';
 import { Persona1Component } from './sbroutes/persona1/persona1.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,7 +26,6 @@ import { PersonaNotFoundComponent } from "app/sbroutes/persona-not-found/persona
     BsButtonDirective,
     Persona1Component,
     Persona2Component,
-    Persona3Component,
     PersonaNotFoundComponent
   ],
   imports: [

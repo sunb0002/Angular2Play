@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { SbauthService } from './../../sbauth/sbauth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Persona2Component implements OnInit {
 
-  constructor() { }
+  constructor(private auth: SbauthService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  logout(): void {
+    console.log('Logout!');
+    this.auth.removeAuth();
+    this.router.navigate(['/perX']);
   }
 
 }

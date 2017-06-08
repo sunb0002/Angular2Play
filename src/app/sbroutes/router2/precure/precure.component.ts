@@ -14,7 +14,10 @@ export class PrecureComponent implements OnInit {
 
   ngOnInit() {
     //console.log("PrecureComponent _oldrouter:", this._oldrouter);
-    console.log("PrecureComponent _newrouter:", this._newrouter);
+
+    // console.log('PrecureComponent ActivatedRoute.data: ', this._newrouter.data);
+    // console.log('PrecureComponent ActivatedRoute.snapshot.data: ', this._newrouter.snapshot.data); // Injected by Guards (Note: won't propagate from higher level)
+
 
     const id: Observable<string> = this._newrouter.params.map(p => p.id);
     const url: Observable<string> = this._newrouter.url.map(segments => segments.join(''));
@@ -26,7 +29,7 @@ export class PrecureComponent implements OnInit {
       this.cureID = params.id;
     });
     this._newrouter.url.subscribe(segments => {
-      console.log('segments', segments.join(''));
+      // console.log('segments', segments.join('')); // segments 1
     });
   }
 }

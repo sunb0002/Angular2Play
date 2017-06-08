@@ -9,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class PrecureBaseComponent implements OnInit {
 
   constructor(private oldrouter: Router, private route: ActivatedRoute) {
-    console.log('PrecureBaseComponent route info2: ', this.route.snapshot.data);
+    console.log('PrecureBaseComponent ActivatedRoute.data: ', this.route.data);
+    console.log('PrecureBaseComponent ActivatedRoute.snapshot.data: ', this.route.snapshot.data); // Note: Injected from both router data and Guards
 
     oldrouter.events.subscribe(event => {
       console.log("PrecureBaseComponent Listening to router event:", event);

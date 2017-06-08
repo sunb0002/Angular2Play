@@ -11,6 +11,9 @@ export const routes2: Routes = [
     path: 'persub',
     component: PrecureBaseComponent,
     canActivate: [SbauthGuard],
+    data: {
+      title: 'Testing Title'
+    },
     resolve: { xxx: SbresolveGuard },
     children: [
       { path: 'ultra', component: UltramanComponent },

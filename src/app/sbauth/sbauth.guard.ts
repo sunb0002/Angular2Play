@@ -14,7 +14,7 @@ export class SbauthGuard implements CanActivate {
             return true;
         } else {
             console.log('BLOCKED BY AUTH GUARD');
-            this.router.navigate(['/perX']);
+            this.router.navigate(['/unauthorized']);
             return false;
         }
 

@@ -17,7 +17,7 @@ export class Persona2Component implements OnInit {
   logout(): void {
     console.log('Logout!');
     this.auth.removeAuth();
-    this.router.navigate(['/perX']);
+    this.router.navigate(['/unauthorized']);
   }
 
 }

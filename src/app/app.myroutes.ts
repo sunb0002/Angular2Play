@@ -6,6 +6,7 @@ import { Persona1Component } from './sbroutes/persona1/persona1.component';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
+    { path: 'unauthorized', component: PersonaNotFoundComponent },
     { path: 'perX', component: PersonaNotFoundComponent },
     { path: 'per2', component: Persona2Component, canActivate: [SbauthGuard] },
     { path: 'per3', redirectTo: 'per1' },

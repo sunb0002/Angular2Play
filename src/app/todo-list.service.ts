@@ -57,7 +57,8 @@ export class TodoListService {
   httpGetList(): void {
     const url1 = '/assets/todo-data2nd.json';
     let obj1 = this.http.get(url1).map(sbres => sbres.json()).retry(4);
-    console.log('httpGetList obj3:', obj1);
+    // Observable.forkJoin([obj1$, obj2$]).subscribe(...)
+    console.log('httpGetList obj1<Observable>:', obj1);
     obj1.subscribe(
       (data) => this.httpHandleData(data),
       (err) => this.httpHandleError(err),
@@ -71,15 +72,16 @@ export class TodoListService {
     try {
       let u = new TodoItemClass();
       u.fromJSON(data);
-      console.log("httpHandleData 1111=", u);
+      console.log("httpHandleData 1111=", u); // Solution 1: write method "fromJSON" within class
 
       let u2temp: string = JSON.parse(JSON.stringify(data));
       let u2: TodoItemClass = Object.assign(new TodoItemClass(), u2temp);
-      console.log("httpHandleData 2222=", u2);
+      console.log("httpHandleData 2222=", u2); // Solution 2: use out-of-box method "JSON.parse"
 
       let u3: TodoItemClass = SerializationHelper.toInstance2(new TodoItemClass(), JSON.stringify(data));
       console.log("httpHandleData 3333=", u3);
-      console.log("httpHandleData 3333=", u3.getID());
+      // console.log("httpHandleData 3333=", u3.getID()); 
+      // Solution 3: write out-of-box method "JSerializationHelper.toInstance2"
 
 
     } catch (e) {

@@ -1,3 +1,4 @@
+import { SbresolveGuard } from './../../sbauth/sbresolve.guard';
 import { SbauthGuard } from './../../sbauth/sbauth.guard';
 import { UltramanComponent } from './ultraman/ultraman.component';
 import { PrecureBaseComponent } from './precure-base/precure-base.component';
@@ -10,6 +11,7 @@ export const routes2: Routes = [
     path: 'persub',
     component: PrecureBaseComponent,
     canActivate: [SbauthGuard],
+    resolve: { xxx: SbresolveGuard },
     children: [
       { path: 'ultra', component: UltramanComponent },
       { path: ':id', component: PrecureComponent }

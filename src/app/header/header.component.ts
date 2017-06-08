@@ -1,4 +1,4 @@
-import { NavigationStart, Router } from '@angular/router';
+import { NavigationCancel, NavigationStart, Router, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { error } from 'util';
 import { Component, OnInit } from '@angular/core';
@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  loading: boolean = false;
+
   magica: string = 'Kaname Madoka';
   myDate: Date;
   NormalColor: string = '#994d00';
@@ -21,11 +23,14 @@ export class HeaderComponent implements OnInit {
   constructor(private _router: Router) {
     _router.events.subscribe(event => {
       console.log("Listening to router event:", event);
+      //NavigationStart {id: 3, url: "/per1"}
+      //RoutesRecognized {id: 3, url: "/per1", urlAfterRedirects: "/per1", state: RouterStateSnapshot}
+      //NavigationEnd {id: 5, url: "/persub/3", urlAfterRedirects: "/persub/3"}
+      //NavigationCancel (In case the AuthGuard Rejected the navigation)
       if (event instanceof NavigationStart) {
-        //NavigationStart {id: 3, url: "/per1"}
-        //RoutesRecognized {id: 3, url: "/per1", urlAfterRedirects: "/per1", state: RouterStateSnapshot}
-        //NavigationEnd {id: 5, url: "/persub/3", urlAfterRedirects: "/persub/3"}
-        //NavigationCancel
+        this.loading = true;
+      } else if (event instanceof NavigationEnd || event instanceof NavigationCancel) {
+        this.loading = false;
       }
     });
 
@@ -52,6 +57,29 @@ export class HeaderComponent implements OnInit {
 
     let Observable$ = Observable.interval(1000);
     Observable$.subscribe(Obs);
+
+    console.log('Wait begins');
+    const obsv = new Observable(observer => {
+
+      setTimeout(() => {
+        observer.next(1);
+      }, 1000);
+
+      setTimeout(() => {
+        observer.next(2);
+      }, 2000);
+
+      setTimeout(() => {
+        observer.next(3);
+      }, 3000);
+
+      setTimeout(() => {
+        observer.next(4);
+      }, 4000);
+
+    });
+    obsv.subscribe(value => console.log(value));
+    console.log('Wait ends');
 
   }
 

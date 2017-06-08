@@ -11,6 +11,10 @@
     <li><a routerLink="persub">PersonaSub</a></li>
 </ul>
 
+<div class="loading-overlay text-success" *ngIf="loading" style="width: 500px;">
+    <b>Loading......</b>
+</div>
+
 <!--must add width for div, otherwise not displaying in line-->
 <div class="main-container mainContainerPushLeft" style="width: 500px;">
     <router-outlet></router-outlet>

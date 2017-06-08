@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrecureBaseComponent implements OnInit {
 
-  constructor() { }
+  constructor(private oldrouter: Router, private route: ActivatedRoute) {
+    console.log('PrecureBaseComponent route info2: ', this.route.snapshot.data);
+
+    oldrouter.events.subscribe(event => {
+      console.log("PrecureBaseComponent Listening to router event:", event);
+    });
+  }
 
   ngOnInit() {
   }

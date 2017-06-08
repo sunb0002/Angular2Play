@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -7,6 +8,7 @@ export class SbauthService {
 
     private authenticated: boolean = true;
     public isAuthenticated(): boolean {
+
         console.log('SbauthService isAuthenticated: ' + this.authenticated);
         return this.authenticated;
     }

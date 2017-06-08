@@ -1,5 +1,5 @@
 import { SbauthService } from './sbauth.service';
-import { RouterStateSnapshot, ActivatedRouteSnapshot, CanActivate, Router} from '@angular/router';
+import { RouterStateSnapshot, ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -9,6 +9,7 @@ export class SbauthGuard implements CanActivate {
     }
 
     canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+
         if (this.auth.isAuthenticated()) {
             console.log('AUTH GUARD PASSED.');
             return true;

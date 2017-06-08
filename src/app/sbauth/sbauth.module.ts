@@ -1,3 +1,4 @@
+import { SbresolveGuard } from './sbresolve.guard';
 import { SbauthGuard } from './sbauth.guard';
 import { SbauthService } from './sbauth.service';
 import { NgModule } from '@angular/core';
@@ -8,6 +9,6 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ],
   declarations: [],
-  providers: [SbauthGuard, SbauthService]
+  providers: [SbauthGuard, SbauthService, SbresolveGuard]
 })
 export class SbauthModule { }

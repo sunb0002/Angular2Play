@@ -5,6 +5,7 @@ import { PrecureBaseComponent } from './precure-base/precure-base.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PrecureComponent } from './precure/precure.component';
+import { PriparaComponent } from './pripara/pripara.component';
 
 export const routes2: Routes = [
   {
@@ -12,10 +13,11 @@ export const routes2: Routes = [
     component: PrecureBaseComponent,
     canActivate: [SbauthGuard],
     data: {
-      title: 'Testing Title'
+      accessRole: 'NSMAN'
     },
     resolve: { xxx: SbresolveGuard },
     children: [
+      { path: 'pripara', component: PriparaComponent },
       { path: 'ultra', component: UltramanComponent },
       { path: ':id', component: PrecureComponent }
     ]

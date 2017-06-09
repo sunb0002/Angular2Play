@@ -16,6 +16,6 @@ export class SbresolveGuard implements Resolve<string> {
         // }, 4000);
         
         // Note: must return Obserable<> object, otherwise router will not wait for the data to be loaded.
-        return Observable.of("SbresolveGuardddddddddd").delay(2000);
+        return Observable.of("SbresolveGuardddddddddd").delay(1000);
     }
 }

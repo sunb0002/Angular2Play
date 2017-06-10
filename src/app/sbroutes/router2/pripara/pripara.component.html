@@ -14,6 +14,8 @@
             <input class="form-control" formControlName="email" />
         </div>
     </div>
+    <mdl-textfield type="text" label="Reactive forms not quite compatible with MDL..." name="username" floating-label>
+    </mdl-textfield>
     <div *ngIf="formErrors.name || formErrors.email" class="alert alert-danger col-md-6 col-md-offset-2">
         <p>{{ formErrors.name }}</p>
         <p>{{ formErrors.email }}</p>

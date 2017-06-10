@@ -17,6 +17,7 @@ import { TodoListService } from './todo-list.service';
 import { DonepipePipe } from './donepipe.pipe';
 import { BsButtonDirective } from './bs-button.directive';
 import { PersonaNotFoundComponent } from "app/sbroutes/persona-not-found/persona-not-found.component";
+import { MdlModule } from '@angular-mdl/core';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { PersonaNotFoundComponent } from "app/sbroutes/persona-not-found/persona
     HttpModule,
     Router2Module,
     SbauthModule,
+    MdlModule, //angular2-mdl
     RouterModule.forRoot(routes) //must manually add
   ],
   providers: [TodoListService], //import my service

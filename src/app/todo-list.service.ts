@@ -56,7 +56,12 @@ export class TodoListService {
 
   httpGetList(): void {
     const url1 = '/assets/todo-data2nd.json';
-    let obj1 = this.http.get(url1).map(sbres => sbres.json()).retry(4);
+    let obj1 = this.http.get(url1).map(sbres => sbres.json()).retry(3).catch(
+      res => {
+        console.log("HTTP ERROR CATCHED! ", res);
+        return res;
+      }
+    );
     // Observable.forkJoin([obj1$, obj2$]).subscribe(...)
     console.log('httpGetList obj1<Observable>:', obj1);
     obj1.subscribe(

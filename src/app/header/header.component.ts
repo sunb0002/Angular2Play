@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   loading: boolean = false;
+  asyncTime: Observable<number>;
 
   magica: string = 'Kaname Madoka';
   myDate: Date;
@@ -56,6 +57,11 @@ export class HeaderComponent implements OnInit {
     };
 
     let Observable$ = Observable.interval(1000);
+
+    this.asyncTime = Observable$;
+    // Directly use |async Pipe to display an Observable$ on page
+    // No need to care about subscribe and unsubscribe
+
     Observable$.subscribe(Obs);
 
     console.log('Wait begins');
@@ -82,5 +88,11 @@ export class HeaderComponent implements OnInit {
     console.log('Wait ends');
 
   }
+
+  // ngOnDestroy(){
+  //   if(this.obsv !== undefined)
+  //     this.obsv.unsubscribe();
+  // }
+  // Unsubscribe the observable, prevent from memory leak. (If you don use Async Pipe)
 
 }

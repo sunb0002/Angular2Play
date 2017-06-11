@@ -20,5 +20,6 @@
     <router-outlet></router-outlet>
 </div>
 <span [ngStyle]="{'font-weight': 'bold', 'color': NormalColor}">
-    Current datetime {{myDate | date:'medium'}}
+    Current datetime {{myDate | date:'medium'}}, 
+    AsyncPipe {{asyncTime | async }}
 </span>

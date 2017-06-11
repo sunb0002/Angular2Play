@@ -64,7 +64,7 @@ export class HeaderComponent implements OnInit {
 
     Observable$.subscribe(Obs);
 
-    console.log('Wait begins');
+    console.log("%cWait begins", this.RainbowCss);
     const obsv = new Observable(observer => {
 
       setTimeout(() => {
@@ -85,7 +85,7 @@ export class HeaderComponent implements OnInit {
 
     });
     obsv.subscribe(value => console.log(value));
-    console.log('Wait ends');
+    console.log("%cWait ends", this.RainbowCss);
 
   }
 

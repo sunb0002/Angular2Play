@@ -18,6 +18,7 @@ import { DonepipePipe } from './donepipe.pipe';
 import { BsButtonDirective } from './bs-button.directive';
 import { PersonaNotFoundComponent } from "app/sbroutes/persona-not-found/persona-not-found.component";
 import { MdlModule } from '@angular-mdl/core';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MdlModule } from '@angular-mdl/core';
     BsButtonDirective,
     Persona1Component,
     Persona2Component,
-    PersonaNotFoundComponent
+    PersonaNotFoundComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

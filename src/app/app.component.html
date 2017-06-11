@@ -6,30 +6,33 @@
                 <mdl-layout-spacer></mdl-layout-spacer>
                 <!-- Navigation. We hide it in small screens. -->
                 <nav class="mdl-navigation mdl-layout--large-screen-only">
-                    <a class="mdl-navigation__link">Link</a>
-                    <a class="mdl-navigation__link">Link</a>
-                    <a class="mdl-navigation__link">Link</a>
+                    <a class="mdl-navigation__link" routerLink="/">Persona1</a>
+                    <a class="mdl-navigation__link" routerLink="per2">Persona2</a>
+                    <a class="mdl-navigation__link" routerLink="persub">PersonaSub</a>
+                    <div class="navbar-nav navbar-right">
+                        <div class="dropdown">
+                            <a id="user-profile" href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="https://avatars1.githubusercontent.com/u/19659266" class="img-responsive img-thumbnail img-circle" height="60" width="60"> UserName </a>
+                            <ul class="dropdown-menu dropdown-block" role="menu">
+                                <li><a href="#">Profil edition</a></li>
+                                <li><a href="#">Admin</a></li>
+                                <li><a href="#">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </nav>
             </mdl-layout-header-row>
         </mdl-layout-header>
         <mdl-layout-drawer>
             <mdl-layout-title>Title</mdl-layout-title>
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link">Link</a>
-                <a class="mdl-navigation__link">Link</a>
-                <a class="mdl-navigation__link">Link</a>
+                <a class="mdl-navigation__link" routerLink="/">Persona1</a>
+                <a class="mdl-navigation__link" routerLink="per2">Persona2</a>
+                <a class="mdl-navigation__link" routerLink="persub">PersonaSub</a>
             </nav>
         </mdl-layout-drawer>
         <mdl-layout-content>
             <!-- Your content goes here -->
-            <h1>
-                <app-header></app-header>
-                <app-add-form (addTodoItem)="addTodo($event)"></app-add-form>
-                <app-todo-items></app-todo-items>
-                <!-- Really can reuse componenet!!! -->
-                <app-todo-items id='2'></app-todo-items>
-            </h1>
-
+            <app-sidebar></app-sidebar>
         </mdl-layout-content>
     </mdl-layout>
 </div>

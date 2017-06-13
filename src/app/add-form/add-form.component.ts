@@ -3,11 +3,12 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-add-form',
   templateUrl: './add-form.component.html',
-  styleUrls: ['./add-form.component.css']
+  styleUrls: ['./add-form.component.css'],
+  outputs: ['addTodoItem']
 })
 export class AddFormComponent implements OnInit {
 
-  @Output()
+  // @Output() (alternative way)
   addTodoItem = new EventEmitter();
   todoText: string = '';
   isOver: boolean;

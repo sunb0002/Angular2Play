@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'app works!';
   //todoItems: TodoItem[];
 
-  constructor(private todoSvc: TodoListService) {
+  constructor() {
   }
 
   ngOnInit() {
@@ -24,9 +24,5 @@ export class AppComponent {
     //this.todoItems = this.todoSvc.getTodoList();
   }
 
-  addTodo(text: string) {
-    //let itemX = new TodoItemClass((new Date().getTime()), text, false);
-    //console.log('mmmmmm addTodo itemX:', itemX);
-    this.todoSvc.addTodo(text);
-  }
+
 }

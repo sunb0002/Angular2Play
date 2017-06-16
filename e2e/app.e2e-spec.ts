@@ -1,3 +1,4 @@
+import { browser } from 'protractor';
 import { SBTodoAppPage } from './app.po';
 
 describe('sbtodo-app App', () => {
@@ -10,5 +11,11 @@ describe('sbtodo-app App', () => {
   it('should display message saying app works', () => {
     page.navigateTo();
     expect(page.getParagraphText()).toEqual('app works!');
+  });
+});
+
+describe('App Page', () => {
+  it('should have a title of wth', () => {
+    browser.get('/perX');
   });
 });

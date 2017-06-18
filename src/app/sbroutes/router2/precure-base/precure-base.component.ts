@@ -1,5 +1,6 @@
 import { ActivatedRoute, Router, NavigationStart, NavigationEnd } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { PrecureComponent } from '../precure/precure.component';
 
 @Component({
   selector: 'app-precure-base',
@@ -7,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./precure-base.component.css']
 })
 export class PrecureBaseComponent implements OnInit {
+
+  // @ViewChild(PrecureComponent)
+  // child: PrecureComponent;
 
   constructor(private oldrouter: Router, private route: ActivatedRoute) {
     console.log('PrecureBaseComponent ActivatedRoute.data: ', this.route.data);
@@ -18,6 +22,16 @@ export class PrecureBaseComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  // ngAfterViewInit() {
+  //   // For @ViewChild
+  //   console.log("Precure Child: ", this.child);
+  // }
+
+  onActivate(componentRef) {
+    console.log("*******Router version @ViewChild, componentRef=", componentRef);
+    // Router version @ViewChild, componentRef= PrecureComponent {...}
   }
 
 }

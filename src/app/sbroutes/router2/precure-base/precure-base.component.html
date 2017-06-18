@@ -1,10 +1,14 @@
 <div style="display: inline; white-space: nowrap;">
     &lt;Precure Base&gt;
+    <!--<br><app-precure></app-precure>  Testing @ViewChild -->
     <small>
     <a routerLink="./1">Season1</a>
     <a routerLink="./3">Season3</a>
     <a routerLink="./ultra">Ultraman</a>
     <a routerLink="./pripara">PriPara(ReactiveForm)</a>
     </small>
-    <router-outlet></router-outlet>
+
+    <!--Router is emitting an $event EventEmitter<Component>, an instance of child component-->
+    <router-outlet (activate)='onActivate($event)'></router-outlet>
+
 </div>

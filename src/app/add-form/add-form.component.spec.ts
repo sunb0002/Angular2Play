@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms'; // Must manually import for ngModel cases
 
 import { AddFormComponent } from './add-form.component';
 
@@ -8,9 +9,10 @@ describe('AddFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddFormComponent ]
+      imports: [ FormsModule ],
+      declarations: [AddFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -22,4 +24,11 @@ describe('AddFormComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should be not null addTodoItem', () => {
+    console.log("Unit testing on addTodoItem");
+    expect(component.addTodoItem).not.toBeNull();
+  });
+
+
 });

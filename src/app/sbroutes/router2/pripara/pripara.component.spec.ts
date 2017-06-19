@@ -1,3 +1,5 @@
+import { MdlModule } from '@angular-mdl/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PriparaComponent } from './pripara.component';
@@ -8,9 +10,10 @@ describe('PriparaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PriparaComponent ]
+      imports: [ReactiveFormsModule, MdlModule], // Must import whatever modules imported in this module!
+      declarations: [PriparaComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

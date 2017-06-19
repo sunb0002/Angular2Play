@@ -1,3 +1,5 @@
+import { SbauthService } from './../../sbauth/sbauth.service';
+import { RouterTestingModule } from '@angular/router/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Persona2Component } from './persona2.component';
@@ -8,9 +10,11 @@ describe('Persona2Component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Persona2Component ]
+      imports: [RouterTestingModule],
+      declarations: [Persona2Component],
+      providers: [SbauthService] // Must put your service as Providers!!!
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

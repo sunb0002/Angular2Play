@@ -1,3 +1,4 @@
+import { RouterTestingModule } from '@angular/router/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PrecureBaseComponent } from './precure-base.component';
@@ -8,6 +9,7 @@ describe('PrecureBaseComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [ PrecureBaseComponent ]
     })
     .compileComponents();

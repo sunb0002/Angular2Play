@@ -34,9 +34,7 @@ describe('sbtodo-app Page', () => {
     page.navigateTo();
     page.navigateTo('/per1');
 
-    // let textobj = page.getParagraphText();
-    // console.log('***textobj: ', textobj);
-
+    browser.pause(); // Super useful
     //expect(page.getParagraphText()).toEqual('app works!');
     expect("asdf").toEqual('asdf');
   });

@@ -1,7 +1,29 @@
 import { browser } from 'protractor';
 import { SBTodoAppPage } from './app.po';
+import { ProfilePage } from './ProfilePage.po';
 
-describe('sbtodo-app App', () => {
+describe('ProfilePage App', () => {
+  let page: ProfilePage;
+
+  beforeEach(() => {
+    page = new ProfilePage();
+  });
+
+  it('should display message containing precure-not-found', () => {
+    page.navigateTo();
+
+    // If you have promise or RXJS not yet unsubscribed, 
+    // do disable Angular waiting before get element.
+    browser.waitForAngularEnabled(false);
+
+    let testObj = page.getElementByID('e2eTest');
+    console.log('***testObj: ', testObj);
+    expect(testObj).toContain('precure-not-found works!');
+
+  });
+});
+
+describe('sbtodo-app Page', () => {
   let page: SBTodoAppPage;
 
   beforeEach(() => {
@@ -19,21 +41,19 @@ describe('sbtodo-app App', () => {
     expect("asdf").toEqual('asdf');
   });
 
-  it('PerX should display message saying not found', () => {
+  xit('PerX should display message saying not found', () => {
     page.navigateTo('/perX');
 
     browser.waitForAngularEnabled(false);
     // Key! If you have promise or other RXJS running, do disable Angular waiting before get element.
     let textobj = page.getElementByID('e2eTest');
-    console.log('***textobj: ', textobj);
+    // console.log('***textobj: ', textobj);
     //expect(page.getParagraphText()).toEqual('app works!');
 
-    expect(textobj).toContain('persona-not-found works!');
+    expect(textobj).toContain('percure');
   });
 });
 
-
-// Very good example
 xdescribe('App Page', () => {
 
   let page: SBTodoAppPage;

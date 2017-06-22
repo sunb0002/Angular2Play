@@ -36,7 +36,6 @@ export class SBTodoAppPage {
     return element(by.css('.title')).getText();
   }
 
-//element(by.id('user_name'))
   getElementByID(id: string) {
     return element(by.id(id)).getText();
   }

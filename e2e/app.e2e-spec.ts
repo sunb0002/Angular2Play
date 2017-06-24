@@ -10,14 +10,19 @@ describe('ProfilePage App', () => {
   });
 
   it('should display message containing precure-not-found', () => {
+
+    // [Arrange]
     page.navigateTo();
 
     // If you have promise or RXJS not yet unsubscribed, 
     // do disable Angular waiting before get element.
     browser.waitForAngularEnabled(false);
 
+    // [Act]
     let testObj = page.getElementByID('e2eTest');
-    console.log('***testObj: ', testObj);
+    // console.log('***testObj: ', testObj);
+
+    // [Assert]
     expect(testObj).toContain('precure-not-found works!');
 
   });

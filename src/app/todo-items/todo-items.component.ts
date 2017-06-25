@@ -18,6 +18,11 @@ export class TodoItemsComponent implements OnInit {
     this.theTodoItems = this.todoSvc.getTodoItems();
   }
 
+  trackItem(index: number, item: TodoItem): number {
+    // console.log('Tracking Item:', item);
+    return item.id;
+  }
+
   deleteItem(id: number) {
     console.log("deleteItem=" + id);
     this.todoSvc.deleteItem(id);

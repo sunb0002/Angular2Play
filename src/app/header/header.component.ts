@@ -1,3 +1,5 @@
+import { sbtimeout } from '../shared/sbtimeout';
+
 import { NavigationCancel, NavigationStart, Router, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { error } from 'util';
@@ -73,6 +75,8 @@ export class HeaderComponent implements OnInit {
         observer.next(1);
       }, 1000);
 
+      this.timenext2();
+
       setTimeout(() => {
         observer.next(2);
       }, 2000);
@@ -96,5 +100,10 @@ export class HeaderComponent implements OnInit {
   //     this.obsv.unsubscribe();
   // }
   // Unsubscribe the observable, prevent from memory leak. (If you don use Async Pipe)
+
+  @sbtimeout(2000)
+  timenext2() {
+    console.log('***Testing sbtimeout with decorator!');
+  }
 
 }

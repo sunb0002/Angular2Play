@@ -7,7 +7,10 @@ import { Observable } from 'rxjs/Rx';
 export class TodoListService {
 
   constructor(private http: Http) {
-    //this.getTodoList();
+    
+    
+    // Cross domain Ajax call is ok 
+    // this.getTodoList();
     this.initTodoItems();
   }
   public todoItems: TodoItem[];
@@ -55,7 +58,8 @@ export class TodoListService {
   }
 
   httpGetList(): void {
-    const url1 = '/assets/todo-data2nd.json';
+    // const url1 = '/assets/todo-data2nd.json';
+    const url1 = "https://jsonplaceholder.typicode.com/posts/3";
     let obj1 = this.http.get(url1).map(sbres => sbres.json()).retry(3).catch(
       res => {
         console.log("HTTP ERROR CATCHED! ", res);

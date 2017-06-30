@@ -85,10 +85,6 @@ export class HeaderComponent implements OnInit {
         observer.next(3);
       }, 3000);
 
-      setTimeout(() => {
-        observer.next(4);
-      }, 4000);
-
     });
     obsv.subscribe(value => console.log(value));
     console.log("%cWait ends", this.RainbowCss);

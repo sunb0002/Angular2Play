@@ -1,3 +1,7 @@
+import { environment } from './../environments/environment';
+import { BASE_PATH } from './shared/variables';
+import { APIS } from './shared/api';
+import { SbhttpService } from './sbhttp.service';
 import { SbauthModule } from './sbauth/sbauth.module';
 import { Router2Module } from './sbroutes/router2/router2.module';
 import { RouterModule } from '@angular/router';
@@ -42,7 +46,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     MdlModule, //angular2-mdl
     RouterModule.forRoot(routes) //must manually add
   ],
-  providers: [TodoListService], //import my service
+  providers: [TodoListService, SbhttpService, APIS,
+    { provide: BASE_PATH, useValue: environment.apiBaseUrl }
+  ], //import my services
   bootstrap: [AppComponent]
 })
 export class AppModule { }

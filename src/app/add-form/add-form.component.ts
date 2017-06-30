@@ -1,3 +1,4 @@
+import { SbhttpService } from './../sbhttp.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -13,7 +14,7 @@ export class AddFormComponent implements OnInit {
   todoText: string = '';
   isOver: boolean;
 
-  constructor() { }
+  constructor(private sbsvc: SbhttpService) { }
 
   ngOnInit() {
   }
@@ -22,6 +23,10 @@ export class AddFormComponent implements OnInit {
     console.log('mmmmmmmmmaddTodoFORM button clicked', $event);
     console.log('mmmmmmmmmaddTodoFORM emmiting', this.todoText);
     this.addTodoItem.emit(this.todoText);
+  }
+
+  sbCall() {
+    this.sbsvc.getReview();
   }
 
 }

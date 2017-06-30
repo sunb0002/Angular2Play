@@ -13,7 +13,7 @@ export class TodoListService {
     // this.getTodoList();
     this.initTodoItems();
   }
-  public todoItems: TodoItem[];
+  private todoItems: TodoItem[];
 
   public getTodoItems(): TodoItem[] {
     return this.todoItems;

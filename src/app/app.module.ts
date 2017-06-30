@@ -44,7 +44,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     Router2Module,
     SbauthModule,
     MdlModule, //angular2-mdl
-    RouterModule.forRoot(routes) //must manually add
+    RouterModule.forRoot(routes, { useHash: true }) //must manually add
   ],
   providers: [TodoListService, SbhttpService, APIS,
     { provide: BASE_PATH, useValue: environment.apiBaseUrl }

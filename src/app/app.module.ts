@@ -1,3 +1,4 @@
+import { SbstatusService } from './sbstatus.service';
 import { environment } from './../environments/environment';
 import { BASE_PATH } from './shared/variables';
 import { APIS } from './shared/api';
@@ -46,7 +47,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     MdlModule, //angular2-mdl
     RouterModule.forRoot(routes, { useHash: true }) //must manually add
   ],
-  providers: [TodoListService, SbhttpService, APIS,
+  providers: [TodoListService, SbhttpService, APIS, SbstatusService,
     { provide: BASE_PATH, useValue: environment.apiBaseUrl }
   ], //import my services
   bootstrap: [AppComponent]

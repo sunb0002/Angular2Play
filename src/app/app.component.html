@@ -1,4 +1,4 @@
-<div class="demo-container" mdl-shadow="2">
+<div *ngIf="!s2.loading; else elseBlock" class="demo-container" mdl-shadow="2">
     <mdl-layout mdl-layout-fixed-header mdl-layout-header-seamed>
         <mdl-layout-header>
             <mdl-layout-header-row>
@@ -36,3 +36,6 @@
         </mdl-layout-content>
     </mdl-layout>
 </div>
+<ng-template #elseBlock>
+    <h2>wwwwwwwwwwwwww still loading</h2>
+</ng-template>

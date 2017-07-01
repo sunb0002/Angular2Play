@@ -1,7 +1,7 @@
 import { CatalogueApi } from './shared/CatalogueApi';
 // import { APIS } from './shared/api';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { BehaviorSubject, Observable, Subject } from 'rxjs/Rx';
 
 @Injectable()
 export class SbhttpService {
@@ -40,5 +40,28 @@ export class SbhttpService {
     console.log('****testing Delay22222');
     // return Observable.of("testDelay2 offff").delay(2000);
     return Observable.throw("testDelay2 offff").delay(2000);
+  }
+
+  public testDelay3(): Observable<string> {
+
+    // RXJS subject turns "cold" Obserbale to "Hot"
+    // But it's useless in this applicaiton.
+    let subject = new BehaviorSubject(0);
+    subject.subscribe({
+      next: (v) => console.log('---------observerA: ' + v)
+    });
+
+    subject.next(1);
+    subject.next(2);
+
+    subject.subscribe({
+      next: (v) => console.log('---------observerB: ' + v)
+    });
+    subject.next(3);
+
+    // return subject;
+    return Observable.of("testDelay3 offff");
+
+
   }
 }

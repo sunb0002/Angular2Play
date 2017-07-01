@@ -31,7 +31,7 @@ export class SbresolveGuard implements Resolve<string> {
         // ================================
 
         // Solution 2======================
-        const $obs = Observable.forkJoin(this.sbsvc.testDelay1(), this.sbsvc.testDelay2()).catch(
+        const $obs = Observable.forkJoin(this.sbsvc.testDelay1(), this.sbsvc.testDelay3()).catch(
             err => {
                 console.log('Resolve Guard FAILD(Catch):', err);
                 this.router.navigate(['/perX']);

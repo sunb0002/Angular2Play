@@ -3,6 +3,12 @@ import { Injectable } from '@angular/core';
 import { TodoItem, TodoItemClass, SerializationHelper } from './shared/todo-item';
 import { Observable } from 'rxjs/Rx';
 
+/**
+ * haha comment
+ * 
+ * @export
+ * @class TodoListService
+ */
 @Injectable()
 export class TodoListService {
 

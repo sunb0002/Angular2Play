@@ -13,12 +13,12 @@ export class PrecureBaseComponent implements OnInit {
   // child: PrecureComponent;
 
   constructor(private oldrouter: Router, private route: ActivatedRoute) {
-    console.log('PrecureBaseComponent ActivatedRoute.data: ', this.route.data);
-    console.log('PrecureBaseComponent ActivatedRoute.snapshot.data: ', this.route.snapshot.data); // Note: Injected from both router data and Guards
+    // console.log('PrecureBaseComponent ActivatedRoute.data: ', this.route.data);
+    // console.log('PrecureBaseComponent ActivatedRoute.snapshot.data: ', this.route.snapshot.data); // Note: Injected from both router data and Guards
 
-    oldrouter.events.subscribe(event => {
-      console.log("PrecureBaseComponent Listening to router event:", event);
-    });
+    // oldrouter.events.subscribe(event => {
+    //   console.log("PrecureBaseComponent Listening to router event:", event);
+    // });
   }
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class PrecureBaseComponent implements OnInit {
   //   console.log("Precure Child: ", this.child);
   // }
 
-  onActivate(componentRef) {
+  onActivate(componentRef?:any) {
     console.log("*******Router version @ViewChild, componentRef=", componentRef);
     // Router version @ViewChild, componentRef= PrecureComponent {...}
   }

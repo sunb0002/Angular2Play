@@ -19,7 +19,7 @@ export class AppComponent {
 
   ngOnInit() {
 
-    this.sbsvc.testDelay1().subscribe(
+    Observable.forkJoin(this.sbsvc.testDelay1(), this.sbsvc.datasource()).subscribe(
       data => {
         console.log('ROOT ngOnInit: ', data);
         this.s2.setLoading(false);

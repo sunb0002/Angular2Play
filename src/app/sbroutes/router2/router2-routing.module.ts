@@ -9,7 +9,7 @@ import { PriparaComponent } from './pripara/pripara.component';
 
 export const routes2: Routes = [
   {
-    path: 'persub',
+    path: 'persub', // Don't put outlet name!!!
     component: PrecureBaseComponent,
     canActivate: [SbauthGuard],
     data: {
@@ -19,7 +19,7 @@ export const routes2: Routes = [
     children: [
       { path: 'pripara', component: PriparaComponent },
       { path: 'ultra', component: UltramanComponent },
-      { path: ':id', component: PrecureComponent }
+      { path: 'cure/:id', component: PrecureComponent }
     ]
   }
 ];

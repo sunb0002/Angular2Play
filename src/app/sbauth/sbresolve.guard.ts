@@ -6,11 +6,11 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@a
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class SbresolveGuard implements Resolve<string> {
+export class SbresolveGuard implements Resolve<any> {
     constructor(private svc: TodoListService, private sbsvc: SbhttpService, private router: Router) {
     }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         console.log('SbresolveGuard getting data');
         // setTimeout(() => {
         //     this.svc.httpGetList();
@@ -31,26 +31,26 @@ export class SbresolveGuard implements Resolve<string> {
         // ================================
 
         // Solution 2======================
-        const $obs = Observable.forkJoin(this.sbsvc.testDelay1(), this.sbsvc.testDelay3()).catch(
+        const $obs = Observable.forkJoin(this.sbsvc.testDelay1()).catch(
             err => {
                 console.log('Resolve Guard FAILD(Catch):', err);
                 this.router.navigate(['/perX']);
-                return Observable.of('SbresolveGuard(Catch) Noooooooo'); // Dont use thorw.
+                return Observable.of('SbresolveGuard(Catch) Noooooooo'); // Dont use throw.
             }
         );
 
-        $obs.subscribe(
-            data => {
-                console.log('Resolve Guard PASSED');
-                // return Observable.of('SbresolveGuard okkkkkkkkkk'); //Useless
-            },
-            // err => {
-            //     console.log('Resolve Guard FAILD:', err);
-            //     // return Observable.throw('SbresolveGuard Noooooooo'); //Useless
-            // }
-        );
-
-        return $obs;
+        // $obs.subscribe(
+        //     data => {
+        //         console.log('Resolve Guard PASSED');
+        //         // return Observable.of('SbresolveGuard okkkkkkkkkk'); //Useless
+        //     }
+        //     // err => {
+        //     //     console.log('Resolve Guard FAILD:', err);
+        //     //     // return Observable.throw('SbresolveGuard Noooooooo'); //Useless
+        //     // }
+        // ); No need to subscribe, as the resolver guard will do the subscribe.
+        let $obs2 = this.sbsvc.testDelay1c();
+        return $obs2;
         // Note: forkJoin returns array like [obs1, obs2], resolve guard can't recognize directly.
         // ================================
     }

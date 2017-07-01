@@ -6,7 +6,9 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs/Rx';
 @Injectable()
 export class SbhttpService {
 
-  constructor(private cataapi: CatalogueApi) { }
+  public mydata;
+  constructor(private cataapi: CatalogueApi) {
+  }
 
   public getReview(): void {
 
@@ -22,13 +24,51 @@ export class SbhttpService {
       (data) => console.log('data is: ', data),
       (err) => console.log('err is: ', err)
     );
+  }
 
-
+  public datasource(): Observable<{}> {
+    return Observable.of({ dddd: '@@@@This is DB data@@@@' }).delay(3000);
   }
 
   public testDelay1(): Observable<string> {
-    console.log('****testing Delay111111');
     return Observable.of("testDelay1 offff").delay(2000);
+  }
+
+  public testDelay1b(): Observable<string> {
+    return this.datasource().do(v => {
+      console.log('testDelay1bbbbb', v);
+    });
+  }
+
+/**
+ * 
+ * Successfully implemented data loading service.
+ * 
+ * @returns {Observable<any>} 
+ * @memberof SbhttpService
+ */
+  public testDelay1c(): Observable<any> {
+
+    if (this.mydata) {
+      return Observable.of('No need to reload data!');
+    } else {
+      return this.datasource().do(source => {
+        console.log('Reloading data!');
+        this.mydata = source;
+      });
+    }
+
+
+
+    // return this.datasource().map(source => {
+    //   console.log('testDelay1c checking if data is already there=', this.mydata);
+    //   if (!this.mydata) {
+    //     this.mydata = source;
+    //     return source;
+    //   } else {
+    //     return Observable.of('No need to reload data!');
+    //   }
+    // });
   }
 
   public testDelay2(): Observable<string> {
@@ -42,25 +82,32 @@ export class SbhttpService {
     return Observable.throw("testDelay2 offff").delay(2000);
   }
 
+
+
+
+
   public testDelay3(): Observable<string> {
 
     // RXJS subject turns "cold" Obserbale to "Hot"
     // But it's useless in this applicaiton.
-    let subject = new BehaviorSubject(0);
+    let subject = new Subject();
     subject.subscribe({
       next: (v) => console.log('---------observerA: ' + v)
     });
 
     subject.next(1);
+    subject.delay(2000);
     subject.next(2);
 
     subject.subscribe({
       next: (v) => console.log('---------observerB: ' + v)
     });
     subject.next(3);
+    subject.next(4);
+    subject.complete();
 
     // return subject;
-    return Observable.of("testDelay3 offff");
+    return subject.asObservable();
 
 
   }

@@ -2,13 +2,14 @@
     &lt;Precure Base&gt;
     <!--<br><app-precure></app-precure>  Testing @ViewChild -->
     <small>
-    <a routerLink="./1">Season1</a>
-    <a routerLink="./3">Season3</a>
+    <a routerLink="./cure/1">Season1</a>
+    <a routerLink="./cure/3">Season3</a>
     <a routerLink="./ultra">Ultraman</a>
     <a routerLink="./pripara">PriPara(ReactiveForm)</a>
     </small>
 
     <!--Router is emitting an $event EventEmitter<Component>, an instance of child component-->
+    <!--Don't put outlet name!!!! Otherwise router can't inject component at all-->
     <router-outlet (activate)='onActivate($event)'></router-outlet>
 
 </div>

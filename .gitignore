@@ -43,3 +43,4 @@ Thumbs.db
 node_modules
 .git
 dist
+e2e_reports

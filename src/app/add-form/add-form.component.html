@@ -2,5 +2,6 @@
     <input type="text" [(ngModel)]="todoText" placeholder="Please Enter Item">
     <button appBsButton="primary" (click)="addTodoFORM($event)" (mouseenter)="isOver = true" (mouseleave)="isOver = false" [ngClass]=" isOver ? 'btn-danger' : 'btn-primary'">Add Lah: {{todoText}}</button>
     <span appBsButtonSpan class="bg-success text-white">MouseFlyOver</span>
-    <button (click)="sbCall()">Don click</button>
+    <button (click)="sbCallGET()">Don click</button>
+    <button (click)="sbCallPOST()">Don click (POST)</button>
 </p>

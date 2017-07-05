@@ -1,0 +1,10 @@
+{
+  "status": 200,
+  "data": {
+    "userId": 1,
+    "nric": "S1111111D",
+    "preferredCollectionPoint": -1,
+    "alternateEmail": "dd@gmail.com",
+    "alternateMobile": "92221111"
+  }
+}

@@ -1,3 +1,4 @@
+import { UpdateProfileRequest } from './shared/model/UpdateProfileRequest';
 import { CatalogueApi } from './shared/CatalogueApi';
 // import { APIS } from './shared/api';
 import { Injectable } from '@angular/core';
@@ -8,6 +9,26 @@ export class SbhttpService {
 
   public mydata;
   constructor(private cataapi: CatalogueApi) {
+  }
+
+  updateMydata(requestParams: UpdateProfileRequest): Observable<any> {
+
+    return this.cataapi.updateProfileUsingPOST(requestParams).do(
+      response => {
+        console.log('Request to update UserProfile: %o. Response: %o', requestParams, response);
+        if (response.status > 300) {
+          
+          throw Observable.throw(JSON.stringify(response));
+        } else {
+          this.mydata = response.data as string;
+        }
+      }
+    ).catch(
+      err => {
+        console.log('Failed to update UserProfile:', err);
+        return err;
+      }
+      );
   }
 
   public getReview(): void {
@@ -26,6 +47,8 @@ export class SbhttpService {
     );
   }
 
+  public postReview
+
   public datasource(): Observable<{}> {
     return Observable.of({ dddd: '@@@@This is DB data@@@@' }).delay(3000);
   }
@@ -40,13 +63,13 @@ export class SbhttpService {
     });
   }
 
-/**
- * 
- * Successfully implemented data loading service.
- * 
- * @returns {Observable<any>} 
- * @memberof SbhttpService
- */
+  /**
+   * 
+   * Successfully implemented data loading service.
+   * 
+   * @returns {Observable<any>} 
+   * @memberof SbhttpService
+   */
   public testDelay1c(): Observable<any> {
 
     if (this.mydata) {

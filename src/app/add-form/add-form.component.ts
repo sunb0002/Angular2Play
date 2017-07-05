@@ -32,7 +32,7 @@ export class AddFormComponent implements OnInit {
 
   sbCallPOST() {
     let post_data = <UpdateProfileRequest>{};
-    post_data.alternateEmail =  'tencent@gmail.com';
+    post_data.alternateEmail = this.todoText || 'tencent@gmail.com';
     post_data.alternateMobile = '777888';
 
     this.sbsvc.updateMydata(post_data).subscribe(

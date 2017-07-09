@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
-// import { diff} from 'deep-diff';s
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-pripara',
@@ -44,6 +44,19 @@ export class PriparaComponent {
     console.log('sbFG FormGroup: ', this.sbFG);
     this.sbFG.valueChanges.subscribe(data => this.checkForm(data)); //onValueChanged
     this.checkForm(); // (re)set validation messages now
+
+
+    const obj1 = { h1: 'aaa', h2: 'bbb' };
+    const obj2 = { h2: 'bbb', h1: 'aaa' };
+    const obj3 = null;
+    const obj4 = [1,2,3];
+    const obj5 = [1,2,3];
+    let eqr = _.isEqual(obj1, obj2);
+    // let dif = _.diff(obj1, obj2);
+    console.log('aaa:', _.isEqual(obj1, obj2));
+    console.log('bbb:', _.isEqual(obj3, obj2));
+    console.log('ccc:', _.isEqual(obj4, obj5));
+
   }
 
   checkForm(data?: any) {
@@ -72,10 +85,6 @@ export class PriparaComponent {
   }
 
   doSubmit() {
-    const obj1 = {h1: 'aaa', h2: 'bbb'};
-    const obj2 = {h2: 'bbb', h1: 'aaa', h3: 'ccc'};
-    // let dif = diff(obj1, obj2);
-    // console.log('DIFF:', dif);
     confirm('Here we go');
   }
 

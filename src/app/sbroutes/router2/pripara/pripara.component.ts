@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
+// import { diff} from 'deep-diff';s
 
 @Component({
   selector: 'app-pripara',
@@ -71,7 +72,11 @@ export class PriparaComponent {
   }
 
   doSubmit() {
-    confirm('Here we go!');
+    const obj1 = {h1: 'aaa', h2: 'bbb'};
+    const obj2 = {h2: 'bbb', h1: 'aaa', h3: 'ccc'};
+    // let dif = diff(obj1, obj2);
+    // console.log('DIFF:', dif);
+    confirm('Here we go');
   }
 
 }

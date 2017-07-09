@@ -42,6 +42,7 @@ export class AddFormComponent implements OnInit {
       },
       err => {
         // Handle the error that was passed all the way from service layer.
+        confirm('ja lat!' + err);
         console.log('Update data failed, try again. Details: ', err);
         // this.configservice.showErrorModal = true; (show display a error popup)
         // this.router.navigate(['/perX']); (or redirect)

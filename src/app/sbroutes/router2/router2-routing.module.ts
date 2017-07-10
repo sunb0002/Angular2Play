@@ -1,11 +1,12 @@
-import { SbresolveGuard } from './../../sbauth/sbresolve.guard';
-import { SbauthGuard } from './../../sbauth/sbauth.guard';
-import { UltramanComponent } from './ultraman/ultraman.component';
-import { PrecureBaseComponent } from './precure-base/precure-base.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
+import { SbauthGuard } from './../../sbauth/sbauth.guard';
+import { SbresolveGuard } from './../../sbauth/sbresolve.guard';
+import { PrecureBaseComponent } from './precure-base/precure-base.component';
 import { PrecureComponent } from './precure/precure.component';
 import { PriparaComponent } from './pripara/pripara.component';
+import { UltramanComponent } from './ultraman/ultraman.component';
 
 export const routes2: Routes = [
   {

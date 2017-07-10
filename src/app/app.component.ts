@@ -1,9 +1,8 @@
-import { SbstatusService } from './sbstatus.service';
-import { SbhttpService } from './sbhttp.service';
-import { TodoItem, TodoItemClass } from './shared/todo-item';
 import { Component } from '@angular/core';
-import { TodoListService } from './todo-list.service';
 import { Observable } from 'rxjs/Rx';
+
+import { SbhttpService } from './sbhttp.service';
+import { SbstatusService } from './sbstatus.service';
 
 @Component({
   selector: 'app-root',

@@ -1,9 +1,9 @@
-import { sbtimeout } from '../shared/sbtimeout';
-
-import { NavigationCancel, NavigationStart, Router, NavigationEnd } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { NavigationCancel, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { error } from 'util';
-import { Component, OnInit } from '@angular/core';
+
+import { sbtimeout } from '../shared/sbtimeout';
 
 @Component({
   selector: 'app-header',

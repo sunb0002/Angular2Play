@@ -1,9 +1,10 @@
-import { UpdateProfileRequest } from './shared/model/UpdateProfileRequest';
-import { CatalogueApi } from './shared/CatalogueApi';
-// import { APIS } from './shared/api';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs/Rx';
+import { Observable, Subject } from 'rxjs/Rx';
 
+import { CatalogueApi } from './shared/CatalogueApi';
+import { UpdateProfileRequest } from './shared/model/UpdateProfileRequest';
+
+// import { APIS } from './shared/api';
 @Injectable()
 export class SbhttpService {
 

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import { SbhttpService } from './sbhttp.service';
 import { SbstatusService } from './sbstatus.service';
 
-declare var $: any;
+declare const jQuery: any;
 
 @Component({
   selector: 'app-root',
@@ -29,36 +29,41 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    console.log('AppComponent ngAfterViewInit done.');
+  }
+}
 
-    // const $ = jQuery;
+export function loadjQuery() {
 
-    $(document).ready(function () {
-      $('.menu-link').bigSlide({
-        menu: '#menu',
-        side: 'right',
-        easyClose: 'true'
-      });
-      console.log('bigslide');
+  console.log('Common loadjQuery start.');
+  const $ = jQuery;
 
-      $('#search-button').on('click', function (e) {
-        if ($('#search-input-container').hasClass('hdn')) {
-          e.preventDefault();
-          $('#search-input-container').removeClass('hdn')
-          return false;
-        }
-        console.log('search click');
-      });
-
-      $('#hide-search-input-container').on('click', function (e) {
-        e.preventDefault();
-        $('#search-input-container').addClass('hdn')
-        console.log('search click222');
-        return false;
-      });
+  $(document).ready(function () {
+    $('.menu-link').bigSlide({
+      menu: '#menu',
+      side: 'right',
+      easyClose: 'true'
     });
 
+    console.log('Common Document ready bigslide');
 
-  }
+    $('#search-button').on('click', function (e) {
+      if ($('#search-input-container').hasClass('hdn')) {
+        e.preventDefault();
+        $('#search-input-container').removeClass('hdn')
+        return false;
+      }
+    });
 
+    $('#hide-search-input-container').on('click', function (e) {
+      e.preventDefault();
+      $('#search-input-container').addClass('hdn')
+      return false;
+    });
+  });
 
 }
+
+
+
+

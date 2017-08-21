@@ -1,8 +1,9 @@
 export function sbtimeout(ms: number = 0) {
 
-    // target：实例对象，即 IndexComponent 实例化对象。
-    // key：方法名称，即 fn。
-    // descriptor：对象描述，同Object.getOwnPropertyDescriptor() 
+    // target：IndexComponent
+    // key：fn name.
+    // descriptor：Object.getOwnPropertyDescriptor()
+    // Using JS metadata reflection API to build/call a __decorate() method
     return (target, key, descriptor) => {
 
         let orgMethod = descriptor.value;

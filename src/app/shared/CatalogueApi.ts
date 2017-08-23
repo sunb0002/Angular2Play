@@ -21,10 +21,10 @@ export class CatalogueApi {
 
     constructor(protected http: Http, @Optional() @Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
 
-        console.log('*******CatalogueApi Inject basePath=====', basePath);
-        if (basePath) {
-            this.basePath = basePath;
-        }
+        // console.log('*******CatalogueApi Inject basePath=====', basePath);
+        // if (basePath) {
+        //     this.basePath = basePath;
+        // }
         if (configuration) {
             this.configuration = configuration;
         }

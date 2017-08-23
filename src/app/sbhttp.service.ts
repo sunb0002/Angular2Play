@@ -34,21 +34,31 @@ export class SbhttpService {
 
   public getReview(): void {
 
-    let $obj1 = this.cataapi.getCatalogueCategoriesUsingGET().retry(3).catch(
+    let $obj1 = this.cataapi.getCatalogueCategoriesUsingGET().retry(1)
+    .map(
+      data => {
+        console.log('get Review dataaaaaa', data.title);
+        return data.title + '23333';
+      }
+    ).catch(
       res => {
         console.log("HTTP ERROR CATCHED! ", res);
-        return res;
+        return Observable.throw(res);
       }
     );
-    console.log('SbhttpService $obj1<Observable>:', $obj1);
+    // console.log('SbhttpService $obj1<Observable>:', $obj1);
 
-    $obj1.subscribe(
+    $obj1.switchMap(
+      data => {
+        return Observable.throw(data + 'switchedMapppp');
+      }
+    )
+    .subscribe(
       (data) => console.log('data is: ', data),
       (err) => console.log('err is: ', err)
     );
   }
 
-  public postReview
 
   public datasource(): Observable<{}> {
     return Observable.of({ dddd: '@@@@This is DB data@@@@' }).delay(3000);
@@ -58,7 +68,7 @@ export class SbhttpService {
     return Observable.of("testDelay1 offff").delay(2000);
   }
 
-  public testDelay1b(): Observable<string> {
+  public testDelay1b(): Observable<any> {
     return this.datasource().do(v => {
       console.log('testDelay1bbbbb', v);
     });

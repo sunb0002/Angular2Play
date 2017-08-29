@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { NoPreloading, RouterModule } from '@angular/router';
 import { PersonaNotFoundComponent } from 'app/sbroutes/persona-not-found/persona-not-found.component';
 
 import { environment } from './../environments/environment';
@@ -45,7 +45,7 @@ import { TodoListService } from './todo-list.service';
     Router2Module,
     SbauthModule,
     MdlModule, //angular2-mdl
-    RouterModule.forRoot(routes, { useHash: true }) //must manually add
+    RouterModule.forRoot(routes, { useHash: true, preloadingStrategy: NoPreloading }) // no preloading by default already
   ],
   providers: [TodoListService, SbhttpService, APIS, SbstatusService,
     { provide: BASE_PATH, useValue: environment.apiBaseUrl }

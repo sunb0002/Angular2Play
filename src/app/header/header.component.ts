@@ -102,4 +102,7 @@ export class HeaderComponent implements OnInit {
     console.log('***Testing sbtimeout with decorator!');
   }
 
+  getMagica(who: String): String {
+    return 'Kaname Chan -- ' + who;
+  }
 }

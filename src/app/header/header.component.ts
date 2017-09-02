@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationCancel, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { ActivatedRoute, NavigationCancel, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { error } from 'util';
 
@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
 
   // Router change event listener in a mother component constructor
   // Able to catch child router events too
-  constructor(private _router: Router) {
+  constructor(private _router: Router, private _newrouter: ActivatedRoute) {
     _router.events.subscribe(event => {
       console.log("Listening to router event:", event);
       //NavigationStart {id: 3, url: "/per1"}
@@ -37,6 +37,19 @@ export class HeaderComponent implements OnInit {
         this.loading = false;
       }
     });
+
+
+    this._router.events
+      .filter(event => event instanceof NavigationEnd)
+      .map(() => this._newrouter)
+      .map(route => route.firstChild)
+      .switchMap(child => child ? child.data : Observable.empty())
+      .subscribe(data => {
+        console.log('accessRole: ', data['accessRole']);
+      });
+
+
+
 
   }
 
@@ -105,4 +118,7 @@ export class HeaderComponent implements OnInit {
   getMagica(who: String): String {
     return 'Kaname Chan -- ' + who;
   }
+
+
+
 }

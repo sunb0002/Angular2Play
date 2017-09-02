@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Rx';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -28,11 +28,12 @@ export class PrecureComponent implements OnInit {
     const user = this._newrouter.data.map(d => d.user);
 
     this._newrouter.params.subscribe(params => {
-      console.log('params', params);
+      console.log('params obs', params);
       this.cureID = params.id;
     });
-    this._newrouter.url.subscribe(segments => {
-      // console.log('segments', segments.join('')); // segments 1
-    });
+
+    // this._newrouter.data.subscribe(data => {
+    //   console.log('data obs', data);
+    // });    
   }
 }

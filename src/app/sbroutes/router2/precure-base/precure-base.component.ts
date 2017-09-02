@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { PrecureComponent } from '../precure/precure.component';
@@ -12,14 +13,16 @@ export class PrecureBaseComponent implements OnInit {
   // @ViewChild(PrecureComponent)
   // child: PrecureComponent;
 
-  constructor(private oldrouter: Router, private route: ActivatedRoute) {
+  constructor(private _oldrouter: Router, private _newrouter: ActivatedRoute) {
     // console.log('PrecureBaseComponent ActivatedRoute.data: ', this.route.data);
     // console.log('PrecureBaseComponent ActivatedRoute.snapshot.data: ', this.route.snapshot.data); // Note: Injected from both router data and Guards
 
     // oldrouter.events.subscribe(event => {
     //   console.log("PrecureBaseComponent Listening to router event:", event);
     // });
+
   }
+  
 
   ngOnInit() {
   }

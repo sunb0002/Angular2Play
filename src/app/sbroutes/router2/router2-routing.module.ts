@@ -20,7 +20,7 @@ export const routes2: Routes = [
     children: [
       { path: 'pripara', component: PriparaComponent },
       { path: 'ultra', component: UltramanComponent },
-      { path: 'cure/:id', component: PrecureComponent }
+      { path: 'cure/:id', component: PrecureComponent, data: {accessRole: 'Precure Fans'}}
     ]
   }
 ];

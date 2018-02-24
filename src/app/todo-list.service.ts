@@ -1,11 +1,12 @@
-import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { TodoItem, TodoItemClass, SerializationHelper } from './shared/todo-item';
+import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
+
+import { SerializationHelper, TodoItem, TodoItemClass } from './shared/todo-item';
 
 /**
  * haha comment
- * 
+ *
  * @export
  * @class TodoListService
  */
@@ -13,13 +14,13 @@ import { Observable } from 'rxjs/Rx';
 export class TodoListService {
 
   constructor(private http: Http) {
-    
-    
-    // Cross domain Ajax call is ok 
+
+
+    // Cross domain Ajax call is ok
     // this.getTodoList();
     this.initTodoItems();
   }
-  private todoItems: TodoItem[];
+  public todoItems: TodoItem[];
 
   public getTodoItems(): TodoItem[] {
     return this.todoItems;
@@ -27,9 +28,9 @@ export class TodoListService {
 
 
   initTodoItems() {
-    let item1 = new TodoItemClass(1, 'Todo Item No.1', true);
-    let item2 = new TodoItemClass(2, 'Todo Item No.2', false);
-    let item3 = new TodoItemClass(3, 'Todo Item No.3', false);
+    const item1 = new TodoItemClass(1, 'Todo Item No.1', true);
+    const item2 = new TodoItemClass(2, 'Todo Item No.2', false);
+    const item3 = new TodoItemClass(3, 'Todo Item No.3', false);
     this.todoItems = new Array(item1, item2, item3);
     console.log('mmmmmmSERVICE initTodoItems:', this.todoItems);
   }
@@ -42,19 +43,19 @@ export class TodoListService {
   }
 
   addTodo(text: string) {
-    let itemX = new TodoItemClass((new Date().getTime()), text, false);
+    const itemX = new TodoItemClass((new Date().getTime()), text, false);
     console.log('mmmmmmSERVICE addTodo itemX:', itemX);
     this.todoItems.push(itemX);
   }
 
   deleteItem(input: TodoItemClass | number) {
-    console.log("SERVICE deleteItem: ", input);
+    console.log('SERVICE deleteItem: ', input);
     if (input instanceof TodoItemClass) {
       this.todoItems = this.todoItems.filter(tditem => tditem.id !== input.id);
     } else {
       this.todoItems = this.todoItems.filter(tditem => tditem.id !== input);
     }
-    console.log("SERVICE deleteItem, new list: ", this.todoItems);
+    console.log('SERVICE deleteItem, new list: ', this.todoItems);
   }
 
 
@@ -65,10 +66,10 @@ export class TodoListService {
 
   httpGetList(): void {
     // const url1 = '/assets/todo-data2nd.json';
-    const url1 = "https://jsonplaceholder.typicode.com/posts/3";
-    let obj1 = this.http.get(url1).map(sbres => sbres.json()).retry(3).catch(
+    const url1 = 'https://jsonplaceholder.typicode.com/posts/3';
+    const obj1 = this.http.get(url1).map(sbres => sbres.json()).retry(3).catch(
       res => {
-        console.log("HTTP ERROR CATCHED! ", res);
+        console.log('HTTP ERROR CATCHED! ', res);
         return res;
       }
     );
@@ -85,22 +86,22 @@ export class TodoListService {
     console.log('kkkkkkSERVICE httpHandleData: ', data);
 
     try {
-      let u = new TodoItemClass();
+      const u = new TodoItemClass();
       u.fromJSON(data);
-      console.log("httpHandleData 1111=", u); // Solution 1: write method "fromJSON" within class
+      console.log('httpHandleData 1111=', u); // Solution 1: write method "fromJSON" within class
 
-      let u2temp: string = JSON.parse(JSON.stringify(data));
-      let u2: TodoItemClass = Object.assign(new TodoItemClass(), u2temp);
-      console.log("httpHandleData 2222=", u2); // Solution 2: use out-of-box method "JSON.parse"
+      const u2temp: string = JSON.parse(JSON.stringify(data));
+      const u2: TodoItemClass = Object.assign(new TodoItemClass(), u2temp);
+      console.log('httpHandleData 2222=', u2); // Solution 2: use out-of-box method "JSON.parse"
 
-      let u3: TodoItemClass = SerializationHelper.toInstance2(new TodoItemClass(), JSON.stringify(data));
-      console.log("httpHandleData 3333=", u3);
-      // console.log("httpHandleData 3333=", u3.getID()); 
+      const u3: TodoItemClass = SerializationHelper.toInstance2(new TodoItemClass(), JSON.stringify(data));
+      console.log('httpHandleData 3333=', u3);
+      // console.log("httpHandleData 3333=", u3.getID());
       // Solution 3: write out-of-box method "JSerializationHelper.toInstance2"
 
 
     } catch (e) {
-      console.log("httpHandleData eeee=", e);
+      console.log('httpHandleData eeee=', e);
     }
 
   }

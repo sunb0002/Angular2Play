@@ -18,7 +18,7 @@ export class SbhttpService {
       response => {
         console.log('Request to update UserProfile: %o. Response: %o', requestParams, response);
         if (response.status > 300) {
-          
+
           throw Observable.throw(JSON.stringify(response));
         } else {
           this.mydata = response.data as string;
@@ -34,7 +34,7 @@ export class SbhttpService {
 
   public getReview(): void {
 
-    let $obj1 = this.cataapi.getCatalogueCategoriesUsingGET().retry(1)
+    const $obj1 = this.cataapi.getCatalogueCategoriesUsingGET().retry(1)
     .map(
       data => {
         console.log('get Review dataaaaaa', data.title);
@@ -42,7 +42,7 @@ export class SbhttpService {
       }
     ).catch(
       res => {
-        console.log("HTTP ERROR CATCHED! ", res);
+        console.log('HTTP ERROR CATCHED! ', res);
         return Observable.throw(res);
       }
     );
@@ -65,7 +65,7 @@ export class SbhttpService {
   }
 
   public testDelay1(): Observable<string> {
-    return Observable.of("testDelay1 offff").delay(2000);
+    return Observable.of('testDelay1 offff').delay(2000);
   }
 
   public testDelay1b(): Observable<any> {
@@ -75,10 +75,10 @@ export class SbhttpService {
   }
 
   /**
-   * 
+   *
    * Successfully implemented data loading service.
-   * 
-   * @returns {Observable<any>} 
+   *
+   * @returns {Observable<any>}
    * @memberof SbhttpService
    */
   public testDelay1c(): Observable<any> {
@@ -113,18 +113,18 @@ export class SbhttpService {
 
     console.log('****testing Delay22222');
     // return Observable.of("testDelay2 offff").delay(2000);
-    return Observable.throw("testDelay2 offff").delay(2000);
+    return Observable.throw('testDelay2 offff').delay(2000);
   }
 
 
 
 
 
-  public testDelay3(): Observable<string> {
+  public testDelay3(): Observable<any> {
 
     // RXJS subject turns "cold" Obserbale to "Hot"
     // But it's useless in this applicaiton.
-    let subject = new Subject();
+    const subject = new Subject();
     subject.subscribe({
       next: (v) => console.log('---------observerA: ' + v)
     });

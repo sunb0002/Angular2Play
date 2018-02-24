@@ -13,9 +13,9 @@ declare const jQuery: any;
 })
 export class AppComponent implements AfterViewInit {
   title = 'app works!';
-  //todoItems: TodoItem[];
+  // todoItems: TodoItem[];
 
-  constructor(private sbsvc: SbhttpService, private s2: SbstatusService) {
+  constructor(private sbsvc: SbhttpService, public s2: SbstatusService) {
   }
 
   ngOnInit() {

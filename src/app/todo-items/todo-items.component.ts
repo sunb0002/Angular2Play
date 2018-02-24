@@ -24,7 +24,7 @@ export class TodoItemsComponent implements OnInit {
   }
 
   deleteItem(id: number) {
-    console.log("deleteItem=" + id);
+    console.log('deleteItem=' + id);
     this.todoSvc.deleteItem(id);
   }
 

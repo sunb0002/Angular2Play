@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
 import { SbhttpService } from './sbhttp.service';
@@ -11,9 +11,15 @@ declare const jQuery: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'app works!';
   // todoItems: TodoItem[];
+
+  public notificationOptions = {
+    position: ['middle', 'right'],
+    lastOnBottom: false,
+    timeOut: 2000
+  };
 
   constructor(private sbsvc: SbhttpService, public s2: SbstatusService) {
   }

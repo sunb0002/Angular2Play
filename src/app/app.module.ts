@@ -1,10 +1,13 @@
 import { MdlModule } from '@angular-mdl/core';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoPreloading, RouterModule } from '@angular/router';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 import { PersonaNotFoundComponent } from 'app/sbroutes/persona-not-found/persona-not-found.component';
+import { GlobalErrorHandler } from 'app/shared/GlobalErrorHandler';
 
 import { environment } from './../environments/environment';
 import { AddFormComponent } from './add-form/add-form.component';
@@ -40,16 +43,19 @@ import { TodoListService } from './todo-list.service';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     Router2Module,
     SbauthModule,
-    MdlModule, //angular2-mdl
+    MdlModule, // angular2-mdl
+    SimpleNotificationsModule,
     RouterModule.forRoot(routes, { useHash: true, preloadingStrategy: NoPreloading }) // no preloading by default already
   ],
   providers: [TodoListService, SbhttpService, APIS, SbstatusService,
+    {provide: ErrorHandler, useClass: GlobalErrorHandler},
     { provide: BASE_PATH, useValue: environment.apiBaseUrl }
-  ], //import my services
+  ], // import my services
   bootstrap: [AppComponent]
 })
 export class AppModule { }

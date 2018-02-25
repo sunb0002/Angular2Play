@@ -1,6 +1,7 @@
-import { UpdateProfileRequest } from './../shared/model/UpdateProfileRequest';
+import { Component, EventEmitter, OnInit } from '@angular/core';
+
 import { SbhttpService } from './../sbhttp.service';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { UpdateProfileRequest } from './../shared/model/UpdateProfileRequest';
 
 @Component({
   selector: 'app-add-form',
@@ -12,7 +13,7 @@ export class AddFormComponent implements OnInit {
 
   // @Output() (alternative way)
   addTodoItem = new EventEmitter();
-  todoText: string = '';
+  todoText = '';
   isOver: boolean;
 
   constructor(private sbsvc: SbhttpService) { }
@@ -30,8 +31,17 @@ export class AddFormComponent implements OnInit {
     this.sbsvc.getReview();
   }
 
+  sbThrow() {
+    this.sbThrow2();
+    throw new Error('I purposely threw this General Error.');
+  }
+
+  sbThrow2() {
+    throw new TypeError('I purposely threw this Type Error.');
+  }
+
   sbCallPOST() {
-    let post_data = <UpdateProfileRequest>{};
+    const post_data = <UpdateProfileRequest>{};
     post_data.alternateEmail = this.todoText || 'tencent@gmail.com';
     post_data.alternateMobile = '777888';
 

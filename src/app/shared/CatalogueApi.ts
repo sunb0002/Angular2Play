@@ -108,7 +108,7 @@ export class CatalogueApi {
      */
     public updateProfileUsingPOSTWithHttpInfo(requestParams: models.UpdateProfileRequest, extraHttpRequestParams?: any): Observable<Response> {
         // const path = this.basePath + './assets/post-data.json';
-        const path = 'http://localhost:8080/mha-emart/serviceman/profile';
+        const path = 'http://localhost:8080/sb-sbmart/serviceman/profile';
 
 
         let queryParameters = new URLSearchParams();

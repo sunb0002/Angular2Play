@@ -26,7 +26,7 @@
 
 <span [ngStyle]="{'font-weight': 'bold', 'color': NormalColor}">
     
-    Current datetime {{myDate | date:'medium'}}, 
+    Current datetime {{myDate | date:'medium'}}, <br>
     <ng-container *ngIf="(asyncTime | async) %2 == 0; else elseBlock">
         percentPipe: {{myCount | percent: '2.2' }}
     </ng-container>

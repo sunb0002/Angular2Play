@@ -1,5 +1,6 @@
 import { MdlModule } from '@angular-mdl/core';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { APP_ID, ErrorHandler, Inject, NgModule, PLATFORM_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -42,7 +43,7 @@ import { TodoListService } from './todo-list.service';
     SidebarComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'app-root' }),
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
@@ -53,9 +54,18 @@ import { TodoListService } from './todo-list.service';
     RouterModule.forRoot(routes, { useHash: true, preloadingStrategy: NoPreloading }) // no preloading by default already
   ],
   providers: [TodoListService, SbhttpService, APIS, SbstatusService,
-    {provide: ErrorHandler, useClass: GlobalErrorHandler},
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },
     { provide: BASE_PATH, useValue: environment.apiBaseUrl }
   ], // import my services
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(
+    @Inject(PLATFORM_ID) private platFormId,
+    @Inject(APP_ID) private appId
+  ) {
+    const platForm = isPlatformBrowser(platFormId) ? 'on server' : 'in browser';
+    console.log(`Running platFormId=${platFormId}--${platForm} with appId=${appId}`);
+  }
+}

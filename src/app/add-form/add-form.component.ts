@@ -1,3 +1,4 @@
+import {TodoListService} from '../todo-list.service';
 import { Component, EventEmitter, OnInit } from '@angular/core';
 
 import { SbhttpService } from './../sbhttp.service';
@@ -16,7 +17,7 @@ export class AddFormComponent implements OnInit {
   todoText = '';
   isOver: boolean;
 
-  constructor(private sbsvc: SbhttpService) { }
+  constructor(private sbsvc: SbhttpService, public todoSvc: TodoListService) { }
 
   ngOnInit() {
   }
@@ -28,7 +29,8 @@ export class AddFormComponent implements OnInit {
   }
 
   sbCallGET() {
-    this.sbsvc.getReview();
+    // this.sbsvc.getReview();
+    this.todoSvc.httpGetList();
   }
 
   sbThrow() {

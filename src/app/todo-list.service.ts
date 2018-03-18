@@ -1,5 +1,5 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import { SerializationHelper, TodoItem, TodoItemClass } from './shared/todo-item';
@@ -13,7 +13,7 @@ import { SerializationHelper, TodoItem, TodoItemClass } from './shared/todo-item
 @Injectable()
 export class TodoListService {
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
 
 
     // Cross domain Ajax call is ok
@@ -67,7 +67,7 @@ export class TodoListService {
   httpGetList(): void {
     // const url1 = '/assets/todo-data2nd.json';
     const url1 = 'https://jsonplaceholder.typicode.com/posts/3';
-    const obj1 = this.http.get(url1).map(sbres => sbres.json()).retry(3).catch(
+    const obj1 = this.http.get(url1).map(sbres => sbres).retry(3).catch(
       res => {
         console.log('HTTP ERROR CATCHED! ', res);
         return res;

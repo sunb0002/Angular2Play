@@ -1,5 +1,6 @@
 import { MdlModule } from '@angular-mdl/core';
 import { isPlatformBrowser } from '@angular/common';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { APP_ID, ErrorHandler, Inject, NgModule, PLATFORM_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -8,7 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoPreloading, RouterModule } from '@angular/router';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { PersonaNotFoundComponent } from 'app/sbroutes/persona-not-found/persona-not-found.component';
-import { GlobalErrorHandler } from 'app/shared/GlobalErrorHandler';
 
 import { environment } from './../environments/environment';
 import { AddFormComponent } from './add-form/add-form.component';
@@ -23,6 +23,8 @@ import { Persona1Component } from './sbroutes/persona1/persona1.component';
 import { Persona2Component } from './sbroutes/persona2/persona2.component';
 import { Router2Module } from './sbroutes/router2/router2.module';
 import { SbstatusService } from './sbstatus.service';
+import { GlobalHttpInterceptorService } from './services/global-http-interceptor.service';
+import { GlobalErrorHandler } from './services/GlobalErrorHandler';
 import { APIS } from './shared/api';
 import { BASE_PATH } from './shared/variables';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -45,6 +47,7 @@ import { TodoListService } from './todo-list.service';
   imports: [
     BrowserModule.withServerTransition({ appId: 'app-root' }),
     BrowserAnimationsModule,
+    HttpClientModule,
     FormsModule,
     HttpModule,
     Router2Module,
@@ -54,6 +57,7 @@ import { TodoListService } from './todo-list.service';
     RouterModule.forRoot(routes, { useHash: true, preloadingStrategy: NoPreloading }) // no preloading by default already
   ],
   providers: [TodoListService, SbhttpService, APIS, SbstatusService,
+    { provide: HTTP_INTERCEPTORS, useClass: GlobalHttpInterceptorService, multi: true },
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
     { provide: BASE_PATH, useValue: environment.apiBaseUrl }
   ], // import my services

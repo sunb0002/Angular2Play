@@ -28,6 +28,8 @@
         "@angular/router": "^5.2.6",
         "@nguniversal/express-engine": "^5.0.0-beta.5",
         "@nguniversal/module-map-ngfactory-loader": "^5.0.0-beta.5",
+        "@ngx-translate/core": "^9.1.1",
+        "@ngx-translate/http-loader": "^2.0.1",
         "@types/bootstrap": "^3.3.38",
         "@types/echarts": "0.0.12",
         "@types/jasmine": "^2.8.6",

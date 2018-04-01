@@ -50,7 +50,9 @@
             <h1>
                 <app-header>
                     <!--ng-content, all children can reuse and customize.-->
-                    <div class="content1">Cure a la mode!</div>
+                    <div class="content1">
+                        Cure a la mode! {{ 'PRECURE' | translate }}
+                    </div>
                 </app-header>
                 <app-add-form (addTodoItem)="addTodo($event)"></app-add-form>
                 <app-todo-items></app-todo-items>

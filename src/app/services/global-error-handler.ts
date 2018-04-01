@@ -8,6 +8,7 @@ export class GlobalErrorHandler extends ErrorHandler {
     }
 
     handleError(error) {
+        console.error(error);
         if (error instanceof TypeError) {
             this.notificationSvc.warn('Type Error', error + ', Occured at: ' + location.href);
         } else {

@@ -1,18 +1,39 @@
 <p>
     header works! Magic girl today: {{getMagica(magica)}}
 </p>
+<br>
+<div>{{ 'HELLO' | translate:param }}~</div>
+
+
 <small>
+    Language: <select (change)="changeKotoba($event.target.value)" id="kotoba">
+        <option value="en">English</option>
+        <option value="cn">中文</option>
+        <option value="jp">日本語</option>
+    </select>
     <ng-content select=".content1"></ng-content>
 </small>
 
 
 <ul class="nav navbar-nav">
-    <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="per1">Persona1</a></li>
-    <li><a routerLink="per2">Persona2(Protected)</a></li>
-    <li><a routerLink="per3">Persona3(1)</a></li>
-    <li><a routerLink="perX">PersonaX(404page)</a></li>
-    <li><a routerLink="persub">PersonaSub(ChildModule)</a></li>
+    <li>
+        <a routerLink="/">Home</a>
+    </li>
+    <li>
+        <a routerLink="per1">Persona1</a>
+    </li>
+    <li>
+        <a routerLink="per2">Persona2(Protected)</a>
+    </li>
+    <li>
+        <a routerLink="per3">Persona3(1)</a>
+    </li>
+    <li>
+        <a routerLink="perX">PersonaX(404page)</a>
+    </li>
+    <li>
+        <a routerLink="persub">PersonaSub(ChildModule)</a>
+    </li>
 </ul>
 
 <div class="loading-overlay text-success" *ngIf="loading" style="width: 500px;">
@@ -25,8 +46,9 @@
 </div>
 
 <span [ngStyle]="{'font-weight': 'bold', 'color': NormalColor}">
-    
-    Current datetime {{myDate | date:'medium'}}, <br>
+
+    Current datetime {{myDate | date:'medium'}},
+    <br>
     <ng-container *ngIf="(asyncTime | async) %2 == 0; else elseBlock">
         percentPipe: {{myCount | percent: '2.2' }}
     </ng-container>

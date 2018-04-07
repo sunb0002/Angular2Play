@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationCancel, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { catchError, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Rx';
 import { error } from 'util';
 
@@ -68,6 +69,19 @@ export class HeaderComponent implements OnInit {
     this.translateSvc.use(newLang).subscribe(() => {
       console.log('Changed to new language:', newLang);
     });
+
+    this.getObsPipeTest().subscribe(
+      data => console.log('Pipe test', data)
+    );
+
+  }
+
+  getObsPipeTest(): Observable<number | void> {
+    return Observable.of(1, 2, 3).pipe(
+      catchError(ex => Observable.throw(ex)),
+      tap(resp => console.log(resp))
+    );
+
   }
 
   ngOnInit() {

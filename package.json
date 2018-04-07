@@ -51,7 +51,7 @@
         "ng2-validation": "*",
         "popper.js": "^1.12.9",
         "protractor": "^5.3.0",
-        "rxjs": "*",
+        "rxjs": "^5.5.6",
         "ts-loader": "^4.0.0",
         "ts-node": "^5.0.0",
         "tslint": "^5.9.1",

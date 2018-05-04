@@ -1,6 +1,12 @@
-import {TodoListService} from '../todo-list.service';
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { forkJoin } from 'rxjs/observable/forkJoin';
+import { of } from 'rxjs/observable/of';
+import { _throw } from 'rxjs/observable/throw';
+import { catchError } from 'rxjs/operators/catchError';
+import { delay } from 'rxjs/operators/delay';
+import { finalize } from 'rxjs/operators/finalize';
 
+import { TodoListService } from '../todo-list.service';
 import { SbhttpService } from './../sbhttp.service';
 import { UpdateProfileRequest } from './../shared/model/UpdateProfileRequest';
 
@@ -8,12 +14,11 @@ import { UpdateProfileRequest } from './../shared/model/UpdateProfileRequest';
   selector: 'app-add-form',
   templateUrl: './add-form.component.html',
   styleUrls: ['./add-form.component.css'],
-  outputs: ['addTodoItem']
 })
 export class AddFormComponent implements OnInit {
 
   // @Output() (alternative way)
-  addTodoItem = new EventEmitter();
+  @Output() addTodoItem = new EventEmitter();
   todoText = '';
   isOver: boolean;
 
@@ -60,6 +65,24 @@ export class AddFormComponent implements OnInit {
         // this.router.navigate(['/perX']); (or redirect)
       }
     )
+
+  }
+
+  sbTest(): void {
+
+    console.log('-------Test start');
+    forkJoin(
+      of('11111'),
+      of('22222').pipe(delay(1000)),
+      of('33333').pipe(delay(2000)),
+      _throw('44444').pipe(catchError(ex => of(ex))),
+    ).pipe(
+      finalize(() => console.log('-------Test end'))
+    )
+      .subscribe(
+        data => console.log(data),
+        error => console.log(error)
+      );
 
   }
 

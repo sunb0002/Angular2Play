@@ -61,7 +61,7 @@ export class SbhttpService {
 
 
   public datasource(): Observable<{}> {
-    return Observable.of({ dddd: '@@@@This is DB data@@@@' }).delay(3000);
+    return Observable.of({ dddd: '@@@@This is DB data@@@@' }).delay(1000);
   }
 
   public testDelay1(): Observable<string> {

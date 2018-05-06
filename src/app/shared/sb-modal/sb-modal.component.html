@@ -1,0 +1,20 @@
+<div class="modal fade" id="notification-modal" tabindex="-1" role="dialog" aria-labelledby="data-reload-modal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header p-1" [ngClass]="content?.isError ? 'bg-danger' : 'bg-primary'">
+      </div>
+      <div class="modal-body text-center">
+        <ng-container *ngIf="content?.isError">
+          <p class="mb-3 text-danger">
+            <i class="fa fa-exclamation-circle fa-4x"></i>
+          </p>
+          <h3 id="notification-modal-title" class="mb-3 text-danger">{{content?.title}}</h3>
+        </ng-container>
+        <p id="notification-modal-desc" class="mb-0">{{content?.description}}</p>
+      </div>
+      <div class="modal-footer">
+        <button id="notification-modal-btn" type="button" class="btn sc-btn btn-block" data-dismiss="modal" (click)="buttonClicked()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

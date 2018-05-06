@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { SbmodalService } from 'app/services/sbmodal.service';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 import { of } from 'rxjs/observable/of';
 import { _throw } from 'rxjs/observable/throw';
@@ -22,7 +23,11 @@ export class AddFormComponent implements OnInit {
   todoText = '';
   isOver: boolean;
 
-  constructor(private sbsvc: SbhttpService, public todoSvc: TodoListService) { }
+  constructor(
+    private sbsvc: SbhttpService,
+    public todoSvc: TodoListService,
+    private modalSvc: SbmodalService,
+  ) { }
 
   ngOnInit() {
   }
@@ -68,7 +73,7 @@ export class AddFormComponent implements OnInit {
 
   }
 
-  sbTest(): void {
+  sbTestObs(): void {
 
     console.log('-------Test start');
     forkJoin(
@@ -84,6 +89,12 @@ export class AddFormComponent implements OnInit {
         error => console.log(error)
       );
 
+  }
+
+  sbTestModal(): void {
+    this.modalSvc.send('This is title', 'This is description').subscribe(
+      data => console.log('To execute any callback.')
+    );
   }
 
 }

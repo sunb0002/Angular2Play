@@ -12,6 +12,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import { createTranslateLoader } from 'app/config/i18n.loader';
 import { PersonaNotFoundComponent } from 'app/sbroutes/persona-not-found/persona-not-found.component';
 import { GlobalErrorHandler } from 'app/services/global-error-handler';
+import { SbmodalService } from 'app/services/sbmodal.service';
 
 import { environment } from './../environments/environment';
 import { AddFormComponent } from './add-form/add-form.component';
@@ -28,6 +29,7 @@ import { Router2Module } from './sbroutes/router2/router2.module';
 import { SbstatusService } from './sbstatus.service';
 import { GlobalHttpInterceptorService } from './services/global-http-interceptor.service';
 import { APIS } from './shared/api';
+import { SbModalComponent } from './shared/sb-modal/sb-modal.component';
 import { BASE_PATH } from './shared/variables';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TodoItemsComponent } from './todo-items/todo-items.component';
@@ -44,7 +46,8 @@ import { TodoListService } from './todo-list.service';
     Persona1Component,
     Persona2Component,
     PersonaNotFoundComponent,
-    SidebarComponent
+    SidebarComponent,
+    SbModalComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'app-root' }),
@@ -66,7 +69,7 @@ import { TodoListService } from './todo-list.service';
     ),
     RouterModule.forRoot(routes, { useHash: true, preloadingStrategy: NoPreloading }) // no preloading by default already
   ],
-  providers: [TodoListService, SbhttpService, APIS, SbstatusService,
+  providers: [TodoListService, SbhttpService, APIS, SbstatusService, SbmodalService,
     { provide: HTTP_INTERCEPTORS, useClass: GlobalHttpInterceptorService, multi: true },
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
     { provide: BASE_PATH, useValue: environment.apiBaseUrl }

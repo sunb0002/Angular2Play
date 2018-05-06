@@ -117,17 +117,13 @@ export class HeaderComponent implements OnInit {
 
       setTimeout(() => {
         observer.next(1);
-      }, 1000);
+      }, 500);
 
       this.timenext2();
 
       setTimeout(() => {
         observer.next(2);
-      }, 2000);
-
-      setTimeout(() => {
-        observer.next(3);
-      }, 3000);
+      }, 1000);
 
     });
     obsv.subscribe(value => console.log(value));
